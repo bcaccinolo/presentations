@@ -11,7 +11,7 @@
 
 ```
 rm -rf prez/images/
-cp -r images/ prez/
+cp -r images prez/
 ```
 
 
