@@ -131,14 +131,15 @@ var AppView = Backbone.View.extend({
 ```
 
 ---
-= slide data-x=0 data-y=1500
+= slide data-x=3000 data-y=-6000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
-# ![text](images/sinatra.png) Sinatra
+#![text](images/sinatra.png) Sinatra
 
 Domain Specific Language (DSL) for quickly creating web-applications in Ruby
 
 ---
-= slide data-x=1000 data-y=1500
+= slide data-x=3000 data-y=-5000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+
 
 ## Models with Mongoid
 
@@ -152,7 +153,8 @@ end
 ```
 
 ---
-= slide data-x=2000 data-y=1500
+= slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+
 
 ## Simplicity of CRUD requests
 
@@ -168,7 +170,7 @@ end
 ```
 
 ---
-= slide data-x=2000 data-y=1000
+= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
 ## Problems encountered
 
@@ -176,12 +178,12 @@ end
 * What to return from Sinatra
 
 ---
-= slide data-x=2000 data-y=2000
+= slide data-x=3000 data-y=-2000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
-# Demo
+# Demo ?
 
 ---
-= slide data-x=3000 data-y=1000
+= slide data-x=3000 data-y=-2000 data-z=-500 data-rotate-z=-90 data-rotate-x=180 data-scale=6
 
 # Tak for det ! :)
 
