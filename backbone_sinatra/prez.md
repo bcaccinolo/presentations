@@ -174,8 +174,8 @@ end
 
 ## Problems encountered
 
-* Events
-* What to return from Sinatra
+- Backbone events
+- What to return from Sinatra?
 
 ---
 = slide data-x=3000 data-y=-2000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
