@@ -1,7 +1,6 @@
 # Backbone
 # &
 # Sinatra
-## By Benoit Caccinolo
 
 ---
 = slide data-x=1000 data-y=0
@@ -94,6 +93,10 @@ var TodoList = Backbone.Collection.extend({
 var TodoView = Backbone.View.extend({
 tagName:  "li",
 template: _.template($('#item-template').html()),
+render: function() {
+ this.$el.html(this.template(this.model.toJSON()));
+ return this;
+},
 events: {
  "click .toggle"   : "toggleDone",
  "dblclick .view"  : "edit",
@@ -101,10 +104,6 @@ events: {
 initialize: function() {
  this.listenTo(this.model,'change',this.render);
  this.listenTo(this.model,'destroy',this.remove);
-},
-render: function() {
- this.$el.html(this.template(this.model.toJSON()));
- return this;
 }}
 ```
 
@@ -162,8 +161,7 @@ end
 post '/todos' do
   content_type :json
   data = JSON.parse request.body.read
-  a = Todo.new data
-  a.save
+  a = Todo.create data
   # returning the id to be saved on the client
   {id:a.id}.to_json
 end
@@ -172,15 +170,24 @@ end
 ---
 = slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
-## Problems encountered
+# Problems
+## Backbone events
+ Backbone.debug.js is the solution
 
-- Backbone events
-- What to return from Sinatra?
+---
+= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+
+# Problems
+## Error handling from Sinatra ?
+
+Do It Yourself.
+
+Override Backbone.sync success and error functions
 
 ---
 = slide data-x=3000 data-y=-2000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
-# Demo ?
+# Q & A
 
 ---
 = slide data-x=3000 data-y=-2000 data-z=-500 data-rotate-z=-90 data-rotate-x=180 data-scale=6
