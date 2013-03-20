@@ -169,6 +169,10 @@ end
 
 ---
 = slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+# Problems ![text](images/problem.png)
+
+---
+= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
 # Backbone events
  Backbone.debug.js is the solution
