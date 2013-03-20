@@ -170,15 +170,13 @@ end
 ---
 = slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
-# Problems
-## Backbone events
+# Backbone events
  Backbone.debug.js is the solution
 
 ---
 = slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
 
-# Problems
-## Error handling from Sinatra ?
+# Error handling
 
 Do It Yourself.
 
