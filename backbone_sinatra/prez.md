@@ -22,7 +22,7 @@ Interface
 
 Backbone todo-list
 
-with Sinatra and MondoDB
+with Sinatra and MongoDB
 
 ---
 = slide data-x=3000 data-y=-1000 data-rotate-z=-90
@@ -53,7 +53,7 @@ var Todo = Backbone.Model.extend({
      this.set({"title": this.defaults().title});
    }
  }
-});
+... });
 ```
 
 ---
@@ -72,7 +72,7 @@ var TodoList = Backbone.Collection.extend({
     if (!this.length) return 1;
     return this.last().get('order') + 1;
   },
-
+  ...
 });
 ```
 
@@ -104,7 +104,7 @@ events: {
 initialize: function() {
  this.listenTo(this.model,'change',this.render);
  this.listenTo(this.model,'destroy',this.remove);
-}}
+}, ... });
 ```
 
 ---
@@ -125,8 +125,8 @@ var AppView = Backbone.View.extend({
  render: function() {
   var done = Todos.done().length;
   var remaining = Todos.remaining().length;
- }
-}
+ },
+... });
 ```
 
 ---
@@ -185,12 +185,7 @@ Do It Yourself.
 Override Backbone.sync success and error functions
 
 ---
-= slide data-x=3000 data-y=-2000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180 data-scale=6
 
 # Q & A
-
----
-= slide data-x=3000 data-y=-2000 data-z=-500 data-rotate-z=-90 data-rotate-x=180 data-scale=6
-
-# Tak for det ! :)
 
