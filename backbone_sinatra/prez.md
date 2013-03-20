@@ -168,17 +168,18 @@ end
 ```
 
 ---
-= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+= slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=5
+
 # Problems ![text](images/problem.png)
 
 ---
-= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+= slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=5
 
 # Backbone events
  Backbone.debug.js is the solution
 
 ---
-= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180
+= slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=5
 
 # Error handling
 
@@ -187,7 +188,7 @@ Do It Yourself.
 Override Backbone.sync success and error functions
 
 ---
-= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=-90 data-rotate-x=180 data-scale=6
+= slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=1
 
 # Q & A
 
