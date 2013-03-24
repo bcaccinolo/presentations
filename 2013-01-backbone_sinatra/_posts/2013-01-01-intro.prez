@@ -1,6 +1,7 @@
-# Backbone
-# &
-# Sinatra
+---
+title: "Backbone.js & Sinatra"
+author: "Benoit Caccinolo"
+---
 
 ---
 = slide data-x=1000 data-y=0
@@ -191,4 +192,9 @@ Override Backbone.sync success and error functions
 = slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=1
 
 # Q & A
+
+
+
+
+
 

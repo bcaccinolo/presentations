@@ -1,0 +1,160 @@
+</div>
+      <div class='step'  slide data-x=1000 data-y=0>
+    
+<p><img src="images/gravatar.jpeg" alt="text"></p>
+
+<p><a href="http://bcaccinolo.github.com">http://bcaccinolo.github.com</a></p>
+
+<p>Rails developer</p>
+
+<p>Technical Lead @ Billetto</p>
+</div>
+      <div class='step'  slide data-x=2000 data-y=0>
+    
+<h2>The Challenge</h2>
+
+<p>Interface</p>
+
+<p>Backbone todo-list</p>
+
+<p>with Sinatra and MongoDB</p>
+</div>
+      <div class='step'  slide data-x=3000 data-y=-1000 data-rotate-z=-90>
+    
+<p><img src="images/backbone.png" alt="text"></p>
+
+<p>Uber-light framework that allows you to structure your Javascript code
+in an MVC way</p>
+
+<p>(Model, ControllerView, Collection)</p>
+</div>
+      <div class='step'  slide data-x=3000 data-y=-2000 data-rotate-z=-90>
+    
+<h2>Backbone Models</h2>
+<pre><code class='prettyprint ruby'>var Todo = Backbone.Model.extend({
+ defaults: function() {
+   return {
+     title: "empty todo...",
+     order: Todos.nextOrder(),
+     done: false
+   };
+ },
+ initialize: function() {
+   if (!this.get("title")) {
+     this.set({"title": this.defaults().title});
+   }
+ }
+... });
+</code></pre></div>
+      <div class='step'  slide data-x=3000 data-y=-3000 data-rotate-z=-90>
+    
+<h2>Backbone Collections</h2>
+<pre><code class='prettyprint ruby'>var TodoList = Backbone.Collection.extend({
+
+  model: Todo,
+
+  url:'/todos',
+
+  nextOrder: function() {
+    if (!this.length) return 1;
+    return this.last().get('order') + 1;
+  },
+  ...
+});
+</code></pre></div>
+      <div class='step'  slide data-x=3000 data-y=-4000 data-rotate-z=-90>
+    
+<h2>Backbone Views</h2>
+
+<h3>2 types:</h3>
+
+<ul>
+<li>Managing rendering of model items</li>
+<li>Managing the whole application interface</li>
+</ul>
+</div>
+      <div class='step'  slide data-x=3000 data-y=-5000 data-rotate-z=-90>
+    
+<h2>Managing rendering of model items</h2>
+<pre><code class='prettyprint ruby'>var TodoView = Backbone.View.extend({
+tagName:  "li",
+template: _.template($('#item-template').html()),
+render: function() {
+ this.$el.html(this.template(this.model.toJSON()));
+ return this;
+},
+events: {
+ "click .toggle"   : "toggleDone",
+ "dblclick .view"  : "edit",
+},
+initialize: function() {
+ this.listenTo(this.model,'change',this.render);
+ this.listenTo(this.model,'destroy',this.remove);
+}, ... });
+</code></pre></div>
+      <div class='step'  slide data-x=3000 data-y=-6000 data-rotate-z=-90>
+    
+<h2>Managing the whole application</h2>
+<pre><code class='prettyprint ruby'>var AppView = Backbone.View.extend({
+ el: $("#todoapp"),
+ events: { ... },
+ initialize: function() {
+  this.input = this.$("#new-todo");
+  this.listenTo(Todos, 'add', this.addOne);
+  this.main = $('#main');
+  Todos.fetch();
+ },
+ render: function() {
+  var done = Todos.done().length;
+  var remaining = Todos.remaining().length;
+ },
+... });
+</code></pre></div>
+      <div class='step'  slide data-x=3000 data-y=-6000 data-z=-500 data-rotate-z=-90 data-rotate-x=180>
+    
+<h1><img src="images/sinatra.png" alt="text"> Sinatra</h1>
+
+<p>Domain Specific Language (DSL) for quickly creating web-applications in Ruby</p>
+</div>
+      <div class='step'  slide data-x=3000 data-y=-5000 data-z=-500 data-rotate-z=-90 data-rotate-x=180>
+    
+<h2>Models with Mongoid</h2>
+<pre><code class='prettyprint ruby'>class Todo
+  include Mongoid::Document
+  field :title, type: String
+  field :order, type: Integer
+  field :done , type: Boolean
+end
+</code></pre></div>
+      <div class='step'  slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=-90 data-rotate-x=180>
+    
+<h2>Simplicity of CRUD requests</h2>
+<pre><code class='prettyprint '>post '/todos' do
+  content_type :json
+  data = JSON.parse request.body.read
+  a = Todo.create data
+  # returning the id to be saved on the client
+  {id:a.id}.to_json
+end
+</code></pre></div>
+      <div class='step'  slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=5>
+    
+<h1>Problems <img src="images/problem.png" alt="text"></h1>
+</div>
+      <div class='step'  slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=5>
+    
+<h1>Backbone events</h1>
+
+<p>Backbone.debug.js is the solution</p>
+</div>
+      <div class='step'  slide data-x=3000 data-y=-4000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=5>
+    
+<h1>Error handling</h1>
+
+<p>Do It Yourself.</p>
+
+<p>Override Backbone.sync success and error functions</p>
+</div>
+      <div class='step'  slide data-x=3000 data-y=-3000 data-z=-500 data-rotate-z=90 data-rotate-x=180 data-scale=1>
+    
+<h1>Q &amp; A</h1>
