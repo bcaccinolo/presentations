@@ -5,7 +5,6 @@ author: "Benoit Caccinolo"
 
 ---
 = slide data-x=1000 data-y=0
-
 ![text](images/gravatar.jpeg)
 
 http://bcaccinolo.github.com
@@ -33,7 +32,7 @@ with Sinatra and MongoDB
 Uber-light framework that allows you to structure your Javascript code
 in an MVC way
 
-(Model, ControllerView, Collection)
+(Model, ViewController, Collection)
 
 ---
 = slide data-x=3000 data-y=-2000 data-rotate-z=-90
@@ -45,7 +44,6 @@ var Todo = Backbone.Model.extend({
  defaults: function() {
    return {
      title: "empty todo...",
-     order: Todos.nextOrder(),
      done: false
    };
  },
@@ -69,12 +67,7 @@ var TodoList = Backbone.Collection.extend({
 
   url:'/todos',
 
-  nextOrder: function() {
-    if (!this.length) return 1;
-    return this.last().get('order') + 1;
-  },
-  ...
-});
+... });
 ```
 
 ---
@@ -118,9 +111,7 @@ var AppView = Backbone.View.extend({
  el: $("#todoapp"),
  events: { ... },
  initialize: function() {
-  this.input = this.$("#new-todo");
-  this.listenTo(Todos, 'add', this.addOne);
-  this.main = $('#main');
+  ...
   Todos.fetch();
  },
  render: function() {
