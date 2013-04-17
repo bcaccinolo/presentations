@@ -262,11 +262,11 @@ $(function(){
   // Finally, we kick things off by creating the **App**.
   var App = new AppView;
 
-
-  window.Todo = Todo;
+  // Exporting
+  window.Todo     = Todo;
   window.TodoList = TodoList;
-  window.Todos = Todos;
+  window.Todos    = Todos;
   window.TodoView = TodoView;
-  window.AppView = AppView;
-  window.App = App;
+  window.AppView  = AppView;
+  window.App      = App;
 });
