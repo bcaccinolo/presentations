@@ -3,7 +3,6 @@
 
 	<head>
 		<meta charset="utf-8">
-
 		<title>Elixir et le pattern matching</title>
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -43,56 +42,55 @@
 					<h3>Le pattern matching</h3>
 				</section>
 
-				<section>
+				<section id="fragments">
 					<h2>What is this?</h2>
 					<h1>
-							<pre><code class="hljs" data-trim contenteditable>a = 42</code></pre>
+							<pre><code style="text-align: center;" class="hljs" data-trim contenteditable>a = 42</code></pre>
 					</h1>
+					<p class="fragment">It's not an assignation</p>
+					<p class="fragment">It's a pattern matching</p>
 				</section>
 
 				<section>
-						<h2>It's not an assignation</h2>
-						<h2>It's a pattern matching</h2>
+					<h2>In Elixir,
+						<span style="font-weight: bold; color: chartreuse; ">=</span>
+						is a match operator</h2>
 				</section>
 
 				<section>
-						<h2>For Elixir, = is a match operator</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+						iex(1)> a = 1
+						1
+						iex(2)> 1 = a
+						1
+						iex(3)> 2 = a
+						** (MatchError) no match of right hand side value: 1
+					</code></pre>
 				</section>
 
 				<section>
-						<pre><code class="hljs" data-trim contenteditable>
-							iex(1)> a = 1
-							1
-							iex(2)> 1 = a
-							1
-							iex(3)> 2 = a
+					<p>Elixir tries to find a way of making the left-hand side equal to the right-hand side. </p>
+					<p>It does this by updating the left-hand side, not the right-hand side.</p>
+					<pre><code class="hljs" data-trim contenteditable>
+							iex(1)> 1 = b
 							** (MatchError) no match of right hand side value: 1
 						</code></pre>
 				</section>
 
 				<section>
-						<p>Elixir tries to find a way of making the left-hand side equal to the right-hand side. </p>
-						<p>It does this by updating the left-hand side, not the right-hand side.</p>
-						<pre><code class="hljs" data-trim contenteditable>
-								iex(1)> 1 = b
-								** (MatchError) no match of right hand side value: 1
-							</code></pre>
-				</section>
+					<h2>With the pin operator</h2>
 
-				<section>
-						<h2>With the pin operator</h2>
-
-						<pre><code class="hljs" data-trim contenteditable>
-							iex(5)> a = 1
-							1
-							iex(6)> a = 2
-							2
-							iex(7)> ^a = 2
-							2
-							iex(8)> ^a = 3
-							** (MatchError) no match of right hand side value: 3
-						</code></pre>
-						<p>There is no rebinding of the variable.</p>
+					<pre><code class="hljs" data-trim contenteditable>
+						iex(5)> a = 1
+						1
+						iex(6)> a = 2
+						2
+						iex(7)> ^a = 2
+						2
+						iex(8)> ^a = 3
+						** (MatchError) no match of right hand side value: 3
+					</code></pre>
+					<p>There is no rebinding of the variable.</p>
 				</section>
 
 				<section>
@@ -114,12 +112,12 @@
 				<section>
 					<h3>With maps</h3>
 					<pre><code class="hljs" data-trim contenteditable>
-							iex()> user = %{name: "John", city: "Lambersart"}
-							%{city: "Lambersart", name: "John"}
-							iex()> %{name: name, city: _} = user
-							%{city: "Lambersart", name: "John"}
-							iex()> name
-							"John"
+						iex()> user = %{name: "John", city: "Lambersart"}
+						%{city: "Lambersart", name: "John"}
+						iex()> %{name: name, city: _} = user
+						%{city: "Lambersart", name: "John"}
+						iex()> name
+						"John"
 					</code></pre>
 				</section>
 
@@ -157,10 +155,9 @@
 		<script src="js/reveal.js"></script>
 
 		<script>
-
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
@@ -178,8 +175,6 @@
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
-
 		</script>
-
 	</body>
 </html>
