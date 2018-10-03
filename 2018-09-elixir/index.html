@@ -40,6 +40,15 @@
 				<section>
 					<h1>Elixir</h1>
 					<h3>Le pattern matching</h3>
+
+
+						<aside class="notes">
+this presentation is accessible even for people withoul Elixir
+experience.
+
+what is pattern matching?
+action if checking the presence of a pattern in an expression
+						</aside>
 				</section>
 
 				<section id="fragments">
@@ -49,6 +58,14 @@
 					</h1>
 					<p class="fragment">It's not an assignation</p>
 					<p class="fragment">It's a pattern matching</p>
+
+						<aside class="notes">
+we are used to define this expression as an assignation
+
+no, it is pattern matching in Elixir
+
+so why?
+						</aside>
 				</section>
 
 				<section>
@@ -58,6 +75,20 @@
 				</section>
 
 				<section>
+
+					<h1>
+							<pre><code style="text-align: center;" class="hljs" data-trim contenteditable>a = 42</code></pre>
+					</h1>
+					<p>Elixir tries to find a way of making the left-hand side equal to the right-hand side. </p>
+					<p>It does this by updating the left-hand side, not the right-hand side.</p>
+					<pre><code class="hljs" data-trim contenteditable>
+							iex(1)> 1 = b
+							** (MatchError) no match of right hand side value: 1
+						</code></pre>
+				</section>
+
+				<section>
+          <h2>Examples</h2>
 					<pre><code class="hljs" data-trim contenteditable>
 						iex(1)> a = 1
 						1
@@ -66,16 +97,15 @@
 						iex(3)> 2 = a
 						** (MatchError) no match of right hand side value: 1
 					</code></pre>
+
+
+						<aside class="notes">
+              we do not talk of assignation
+
+              we talk about binding
+						</aside>
 				</section>
 
-				<section>
-					<p>Elixir tries to find a way of making the left-hand side equal to the right-hand side. </p>
-					<p>It does this by updating the left-hand side, not the right-hand side.</p>
-					<pre><code class="hljs" data-trim contenteditable>
-							iex(1)> 1 = b
-							** (MatchError) no match of right hand side value: 1
-						</code></pre>
-				</section>
 
 				<section>
 					<h2>With the pin operator</h2>
@@ -91,10 +121,19 @@
 						** (MatchError) no match of right hand side value: 3
 					</code></pre>
 					<p>There is no rebinding of the variable.</p>
+
+
+						<aside class="notes">
+              Pattern matching without binding
+              when the variable is already binded.
+						</aside>
 				</section>
 
-				<section>
+				<section id="fragments">
 					<h2>Usage</h2>
+          <p class="fragment">- in Lists</p>
+          <p class="fragment">- in Maps</p>
+          <p class="fragment">- in Functions</p>
 				</section>
 
 				<section>
