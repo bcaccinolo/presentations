@@ -149,6 +149,37 @@ so why?
 				</section>
 
 				<section>
+					<h3>With lists</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+							iex(1)> [a, b, c | tl] = [1,2,3,4,5]
+							[1, 2, 3, 4, 5]
+							iex(2)> a
+							1
+							iex(3)> b
+							2
+							iex(4)> c
+							3
+					</code></pre>
+				</section>
+
+				<section>
+						<h3>a Tuple example</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+							defmodule Matcher do
+
+							def get_msg(response) do
+								case response do
+									{:ok, msg} ->
+										"Success: #{msg}"
+									{:error, msg} ->
+										"Error: #{msg}"
+								end
+							end
+							end
+						</code></pre>
+						</section>
+
+				<section>
 					<h3>With maps</h3>
 					<pre><code class="hljs" data-trim contenteditable>
 						iex()> user = %{name: "John", city: "Lambersart"}
