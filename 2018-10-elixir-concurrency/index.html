@@ -15,6 +15,10 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<!-- Bulma config -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -28,7 +32,6 @@
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
-
 	<body>
 <div class="reveal">
 <div class="slides">
@@ -37,6 +40,8 @@
 		<h1>Elixir</h1>
 		<h2>Concurrency</h2>
 		<aside class='notes'>
+			before 'pattern matching'
+			what is Concurrency or concurrent programming?
 		</aside>
 	</section>
 
@@ -47,12 +52,66 @@
 		<span style="font-style: italic;" class='fragment'>Dave Thomas</span>
 
 		<aside class='notes'>
+			Is the principle of...
+
+			Why should we do this ?
+			I'm happy with the way I code today!
+			And according to Moore's law this will be better and better...
+			What is Moore's law?
 		</aside>
 	</section>
 
-	<section id="fragments">
-		<h2 class="fragment">💣</h2>
+	<section data-background="./images/moore_s_law.png">
+		<p class="fragment has-background-white-ter has-text-black"
 
+		>Moore’s law says the speed of computers would double every 2 years.</p>
+		<p class="fragment has-background-white-ter has-text-black">
+				This was true until 2000.
+		</p>
+		<p class="fragment has-background-white-ter has-text-black">
+		But reducing the size of transistor becomes more complicated.
+	</p>
+
+		<aside class='notes'>
+			it's the same when you fold in 2 a sheet of paper.
+			Again, again and again. More and more difficult.
+		</aside>
+	</section>
+
+	<section>
+		<h1>New strategy</h1>
+
+		<p>To get more thoughput, more processors (cores).</p>
+		<p>Thoughput continue increase.</p>
+		<aside class='notes'>
+		</aside>
+	</section>
+
+	<section>
+
+			<div class="columns">
+					<div class="column is-two-fifths">
+						<figure class="image is-square">
+							<img src="./images/intel i9.jpg" alt="">
+						</figure>
+					</div>
+					<div class="column">
+							<p>intel i9</p>
+							<p>18/36 cores/virtual cores</p>
+							<p>2.60 GHz</p>
+					</div>
+				</div>
+
+		<aside class='notes'>
+				As an example,
+
+				Now that we have the reason of the interest for concurrent prog.
+				How do we do such thing?
+		</aside>
+	</section>
+
+	<section>
+		<h2>💣</h2>
 		<p class="fragment">Threads</p>
 		<p class="fragment">OS processes</p>
 		<p class="fragment">Mutexes</p>
@@ -64,21 +123,37 @@
 			- difficulties
 			- difficult codebase to maintain
 			and that's why we don't do it that often.
+
+			It can rapidly become a spaghetti code of hell.
 		</aside>
 	</section>
 
 	<section>
 		<img src="./images/funny.png" />
 		<aside class='notes'>
+			Hopefully there is a better way to do this.
+			with Elixir.
 		</aside>
 	</section>
 
 	<section>
-		<h2 class="fragment">🦄</h2>
+		<h2>🦄</h2>
 		<p class="fragment">This is not the case in Elixir</p>
-		<p class="fragment">Processes run in OTP (the Erlang VM)</p>
-		<p class="fragment">Use the Actor model</p>
+		<p class="fragment">OTP (the Erlang VM) is the abstraction layer handling all the complexity for us</p>
+		<p class="fragment">Processes are :
+			<ul class='fragment'>
+					<li>easy to use</li>
+					<li>light</li>
+			</ul></p>
+		<p class="fragment">They use the Actor model</p>
 		<aside class='notes'>
+		</aside>
+	</section>
+
+	<section>
+		<img src="./images/otp.png" />
+		<aside class='notes'>
+			What is the actor model?
 		</aside>
 	</section>
 
@@ -86,15 +161,96 @@
 		<h2>Actor model</h2>
 		<img src="./images/actors.png" />
 		<aside class='notes'>
-			- Process do not share anything with others
+			- Process do not share anything with each other
 			- Exchange messages
 		</aside>
 	</section>
 
-
+	<section>
+		<h2>Let's create our first process!</h2>
+		<pre class='fragment'><code class="hljs" data-trim contenteditable>
+defmodule SpawnBasic do
+	def greet do
+		IO.puts("Hello!")
+	end
+end
+		</code></pre>
+		<p class='fragment'>Nothing fancy!</p>
+		<aside class='notes'>
+			Let's try this!
+			<p>c "spawn_basic.ex"</p>
+			<p>SpawnBasic.greet</p>
+			<p>spawn(SpawnBasic, :greet, [])</p>
+		</aside>
+	</section>
 
 	<section>
-		<h1>Questions?</h1>
+		<h2>Send messages between processes</h2>
+		<pre class='fragment'><code class='hljs' data-trim contenteditable>
+current = self()
+child = spawn(fn -> send(current, {self(), 1 + 2}) end)
+
+receive do
+	{^child, 3} -> IO.puts "Received 3 back"
+end
+		</code></pre>
+
+		<aside class='notes'>
+			let's see the 2 parts:
+				- sending
+				- receiving
+		</aside>
+	</section>
+
+	<section>
+		<h2>Let's push the limits!</h2>
+		<img src="./images/push_the_limits.jpg" alt="" style="width: 492px;">
+		<aside class='notes'>
+			In the beginning of the presentation, I told you process in Elixir are :
+				- easy to use
+				- light
+			Let's validate this.
+		</aside>
+	</section>
+
+	<section>
+		<h2>Recap</h2>
+		<p>Elixir processes are great to use</p>
+		<ul>
+			<li>easy to use</li>
+			<li>light</li>
+			<li>it's the future of computing</li>
+		</ul>
+		<aside class='notes'>
+		</aside>
+	</section>
+
+	<section>
+		<img src="images/uncle_bob.jpg" />
+		<aside class='notes'>
+		</aside>
+	</section>
+
+	<section>
+			<p>Process are good in Elixir</p>
+			<p>they are just the common brick of better objects</p>
+			<ul>
+				<li>GenServer</li>
+				<li>Agent</li>
+				<li>Task</li>
+			</ul>
+		<aside class='notes'>
+		</aside>
+	</section>
+
+	<section data-background="./images/smiling-dog-thanks.jpg">
+		<aside class='notes'>
+		</aside>
+	</section>
+
+	<section data-background="./images/smiling-dog-questions.jpg">
+		<aside class='notes'>
+		</aside>
 	</section>
 
 </div>
